@@ -1,0 +1,30 @@
+
+<!-- 单个输入框的表单控件 -->
+<form name="form" (ngSubmit)="submit()" #form="ngForm" novalidate>
+  <!-- 输入框组 -->
+  <div class="form-group" [ngClass]="{ 'has-error': invalidValue() }">
+    <!-- 气泡提示 -->
+    <div class="bubble-alert" *ngIf="showAlert">
+      <div *ngIf="invalidSubmit()" class="help-info">您忘了输入{{inputName}}</div>
+      <div *ngIf="invalidFormat()" class="help-info">{{inputName}}格式不对哦</div>
+    </div>
+    <div class="input-group">
+      <!-- 图标 -->
+       <span class="input-group-addon glyphicon glyphicon-{{iconType}}"></span>
+      <!-- 输入框 -->
+      <input [id]="id" [type]="type" [name]="name" [placeholder]="placeholder"
+             (focus)="FocusEvent()" (blur)="BlurEvent()"
+             [(ngModel)]="value" [ngStyle]="CurrentStyles()">
+    </div>
+  </div>
+  <!-- 提交按钮 -->
+  <div class="form-group">
+    <button type="submit" [disabled]="loading" class="btn btn-primary">提交</button>
+    <img *ngIf="loading"
+         src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+  </div>
+</form>
+
+
+
+
